@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_menu_efax"
-                android:background="@drawable/background_deepblue"
+                android:background="@drawable/selector"
 
 
                 />
