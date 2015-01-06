@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_menu_efax"
-                android:background="@drawable/background_lightblue"
+                android:background="@drawable/selector2"
 
                 />
 
@@ -29,8 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_menu_efax"
-                android:background="@drawable/background_deepblue"
-
+                android:background="@drawable/selector1"
                 />
         </LinearLayout>
 
@@ -50,7 +49,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_menu_efax"
-                android:background="@drawable/selector"
+                android:background="@drawable/selector1"
 
 
                 />
@@ -61,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_menu_efax"
-                android:background="@drawable/background_lightblue"
+                android:background="@drawable/selector2"
 
                 />
         </LinearLayout>
@@ -81,7 +80,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_menu_efax"
-            android:background="@drawable/background_lightblue"
+            android:background="@drawable/selector2"
 
 
             />
@@ -92,7 +91,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_menu_efax"
-            android:background="@drawable/background_deepblue"
+            android:background="@drawable/selector1"
 
              />
     </LinearLayout>
