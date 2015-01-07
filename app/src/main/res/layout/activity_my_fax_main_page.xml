@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pccw.mobleoffice.MyFaxMainPage"
-    >
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <LinearLayout
@@ -11,6 +12,7 @@
         android:layout_height="90dp"
         android:orientation="horizontal"
         android:background="#fff2f2f2"
+        android:layout_weight="0"
         >
 
         <RelativeLayout
@@ -29,13 +31,13 @@
                 android:id="@+id/myfaxpgage_head_message1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:text="2"
-                android:textSize="28sp"
+                android:text="1"
+                android:textSize="22sp"
                 android:gravity="center"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:background="#ffff3f29"
+                android:background="@drawable/textview"
 
                 />
         </RelativeLayout>
@@ -54,6 +56,19 @@
             android:background="#ffebebeb"
             />
 
+            <TextView
+                android:id="@+id/myfaxpgage_head_message2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="2"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/textview"
+
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -65,9 +80,23 @@
             android:id="@+id/myfaxpgage_head_button3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/efax_tab_delieved"
+            android:scaleType="fitXY"
+            android:background="#ffebebeb"
 
             />
+            <TextView
+                android:id="@+id/myfaxpgage_head_message3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="3"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/textview"
+
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -79,12 +108,50 @@
             android:id="@+id/myfaxpgage_head_button4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/efax_tab_deleted"
+            android:scaleType="fitXY"
+            android:background="#ffebebeb"
 
             />
+            <TextView
+                android:id="@+id/myfaxpgage_head_message4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="4"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/textview"
+
+                />
     </RelativeLayout>
 
         </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.87">
 
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            </ListView>
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.13"
+
+        >
+
+        <include
+            layout="@layout/footer_bar"
+            />
+
+        </RelativeLayout>
 </LinearLayout>

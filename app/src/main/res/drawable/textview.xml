@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+    <!-- android API里有如下方法，但经测试只有 rectangle有用，其他均在调用处空白
+    <shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape=["rectangle" | "oval" | "line" | "ring"] > -->
+
+    <solid android:color="#ffff3f29" />
+
+    <corners android:radius="100dp" />
+
+
+
+
+</shape>
