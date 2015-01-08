@@ -3,11 +3,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="25dp"
     android:background="#ff2558af"
+    android:paddingLeft="25dp"
     >
 
     <ImageButton
+        android:id="@+id/pop_button"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/ic_new_fax"

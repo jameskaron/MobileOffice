@@ -24,11 +24,12 @@
         </activity>
         <activity
             android:name=".MyFaxMainPage"
-            android:label="@string/title_activity_my_fax_main_page"
-
-            >
+            android:label="@string/title_activity_my_fax_main_page" >
         </activity>
-
+        <activity
+            android:name=".ShowPop"
+            android:label="@string/title_activity_show_pop" >
+        </activity>
     </application>
 
 </manifest>

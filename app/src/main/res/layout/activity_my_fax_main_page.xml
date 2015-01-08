@@ -24,22 +24,21 @@
             android:id="@+id/myfaxpgage_head_button1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:background="#ffebebeb"
             />
             <TextView
-                android:id="@+id/myfaxpgage_head_message1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:text="1"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/textview"
+            android:id="@+id/myfaxpgage_head_message1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="1"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/textview"
 
-                />
+            />
         </RelativeLayout>
 
 
@@ -52,7 +51,6 @@
             android:id="@+id/myfaxpgage_head_button2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:background="#ffebebeb"
             />
 
@@ -80,7 +78,6 @@
             android:id="@+id/myfaxpgage_head_button3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:background="#ffebebeb"
 
             />
@@ -108,7 +105,6 @@
             android:id="@+id/myfaxpgage_head_button4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:background="#ffebebeb"
 
             />
@@ -146,7 +142,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.13"
-
         >
 
         <include
