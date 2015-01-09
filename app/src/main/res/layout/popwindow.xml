@@ -26,6 +26,7 @@
         >
 
         <ImageButton
+            android:id="@+id/footer_button1"
             android:src="@drawable/ic_menu_efax"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
             android:background="#00000000"
             />
         <ImageButton
+            android:id="@+id/footer_button2"
             android:src="@drawable/ic_menu_efax"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

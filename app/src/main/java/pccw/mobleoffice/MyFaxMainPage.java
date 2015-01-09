@@ -1,12 +1,17 @@
 package pccw.mobleoffice;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -37,6 +42,9 @@ public class MyFaxMainPage extends ActionBarActivity {
     private PopupWindow popUp;
     private View layout;
 
+    private ImageButton footerButton1;
+    private ImageButton footerButton2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,9 @@ public class MyFaxMainPage extends ActionBarActivity {
         efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted);
 
         popButton = (ImageButton) findViewById(R.id.pop_button);
+
+        footerButton1 = (ImageButton) findViewById(R.id.footer_button1);
+        footerButton2 = (ImageButton) findViewById(R.id.footer_button2);
 
         //efaxHeadInbox
         efaxHeadInbox.setOnClickListener(new View.OnClickListener() {
@@ -130,31 +141,62 @@ public class MyFaxMainPage extends ActionBarActivity {
         });
 
         //popwindow
+        //后两个参数是width和height
+        popUp = new PopupWindow(getLayoutInflater().inflate(R.layout.popwindow, null),
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
         layout = getLayoutInflater().inflate(R.layout.activity_my_fax_main_page,null);  //获得layout
+        popUp.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popUp.setOutsideTouchable(true);
+        popUp.setFocusable(true);
+
         popButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (click) {
-                    popUp = new PopupWindow(getLayoutInflater().inflate(R.layout.popwindow, null),
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
-                    //后两个参数是width和height
-                    //menuWindow.showAsDropDown(layout); //设置弹出效果
-                    //menuWindow.showAsDropDown(null, 0, layout.getHeight());
+                popUp.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+                popUp.showAsDropDown(layout); //设置弹出效果
+                popUp.showAsDropDown(null, 0, layout.getHeight());
 
-                    popUp.showAtLocation(layout,Gravity.BOTTOM, 0, 0);
-                    click = false;
-                    // Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
-                } else {
-                    popUp.dismiss();
-                    click = true;
-                }
+             // Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+        //popwindow clicked-button
+        footerButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        footerButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
     }
+
+
+
+    public boolean onTouch(View v, MotionEvent event) {
+        // TODO Auto-generated method stub
+
+        //这里处理，当点击gridview以外区域的时候，菜单关闭
+        if (popUp.isShowing())
+            popUp.dismiss();
+
+        Log.d("Demo", "popupWindow::onTouch >>> view: "
+                + v + ", event: " + event);
+        return true;
+    }
+
 
 
     private void initEfax() {
