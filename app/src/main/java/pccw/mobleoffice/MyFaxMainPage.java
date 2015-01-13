@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -38,12 +39,9 @@ public class MyFaxMainPage extends ActionBarActivity {
 
     //popwindow part
     private ImageButton popButton;
-    private boolean click = true;
     private PopupWindow popUp;
     private View layout;
 
-    private ImageButton footerButton1;
-    private ImageButton footerButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +68,7 @@ public class MyFaxMainPage extends ActionBarActivity {
 
         popButton = (ImageButton) findViewById(R.id.pop_button);
 
-        footerButton1 = (ImageButton) findViewById(R.id.footer_button1);
-        footerButton2 = (ImageButton) findViewById(R.id.footer_button2);
+
 
         //efaxHeadInbox
         efaxHeadInbox.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +139,8 @@ public class MyFaxMainPage extends ActionBarActivity {
 
         //popwindow
         //后两个参数是width和height
-        popUp = new PopupWindow(getLayoutInflater().inflate(R.layout.popwindow, null),
+        final  View poplayout = this.getLayoutInflater().inflate(R.layout.popwindow, null);
+        popUp = new PopupWindow(poplayout,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         layout = getLayoutInflater().inflate(R.layout.activity_my_fax_main_page,null);  //获得layout
@@ -153,31 +151,36 @@ public class MyFaxMainPage extends ActionBarActivity {
         popButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popUp.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+                popUp.showAtLocation(layout, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 popUp.showAsDropDown(layout); //设置弹出效果
                 popUp.showAsDropDown(null, 0, layout.getHeight());
 
              // Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
 
 
+                //popwindow clicked-button
+                poplayout.findViewById(R.id.footer_button1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MyFaxMainPage.this, "clicked", Toast.LENGTH_SHORT).show();
+                        popUp.dismiss();
+                    }
+                });
+
+                poplayout.findViewById(R.id.footer_button2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MyFaxMainPage.this, "clicked", Toast.LENGTH_SHORT).show();
+                        popUp.dismiss();
+                    }
+                });
             }
         });
 
 
-        //popwindow clicked-button
-        footerButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        footerButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MyFaxMainPage.this,"clicked",Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
 
 
 
@@ -185,17 +188,6 @@ public class MyFaxMainPage extends ActionBarActivity {
 
 
 
-    public boolean onTouch(View v, MotionEvent event) {
-        // TODO Auto-generated method stub
-
-        //这里处理，当点击gridview以外区域的时候，菜单关闭
-        if (popUp.isShowing())
-            popUp.dismiss();
-
-        Log.d("Demo", "popupWindow::onTouch >>> view: "
-                + v + ", event: " + event);
-        return true;
-    }
 
 
 
