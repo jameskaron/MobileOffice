@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="fest-android-1.0.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/fest-android/1.0.5/761c18fe0e3efec6acd76684f98040fe9e141169/fest-android-1.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/fest-android/1.0.5/946c1c4db069562ae638cf3a8a211c387c465fa9/fest-android-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

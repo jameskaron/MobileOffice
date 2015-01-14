@@ -22,6 +22,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.actionbarsherlock.app.ActionBar;
+//import com.actionbarsherlock.app.SherlockActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,8 @@ public class MyFaxMainPage extends ActionBarActivity {
     private ImageButton efaxHeadDeleted;
 
     private EfaxAdapter adapter;
-    private List<Efax> efaxList = new ArrayList<Efax>();
+    private List<Efax> efaxInboxList = new ArrayList<Efax>();
+    private List<Efax> efaxOutboxList = new ArrayList<Efax>();
     private ListView listView;
 
     //popwindow part
@@ -49,10 +53,11 @@ public class MyFaxMainPage extends ActionBarActivity {
         setContentView(R.layout.activity_my_fax_main_page);
 
         //保证只刷新一次
-        adapter = new EfaxAdapter(MyFaxMainPage.this, R.layout.efax_listview, efaxList);
+        adapter = new EfaxAdapter(MyFaxMainPage.this, R.layout.efax_listview, efaxInboxList);
         listView = (ListView) findViewById(R.id.list_view);
-        initEfax();
-
+        //初始化ListView数据
+        initEfaxInbox();
+        initEfaxOutbox();
         //button1
         efaxHeadInbox = (ImageButton) findViewById(R.id.myfaxpgage_head_button1);
         efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox); //set background image
@@ -74,18 +79,24 @@ public class MyFaxMainPage extends ActionBarActivity {
         efaxHeadInbox.setOnClickListener(new View.OnClickListener() {
             boolean isIconChange = false;
 
+
             @Override
             public void onClick(View v) {
                 if (isIconChange) {     //when isIconChange is true,default image
                     efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox);
                     isIconChange = false;
+                    listView.setVisibility(View.INVISIBLE);  //消失
                 } else {   //when isIconChange is false,clicked image
+                    iniButton(1);
+
                     efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox_p);
                     isIconChange = true;
+                    listView.setVisibility(View.VISIBLE);  //出现
+                    listView.setAdapter(adapter);
                 }
 
 
-                listView.setAdapter(adapter);
+
             }
         });
 
@@ -98,9 +109,13 @@ public class MyFaxMainPage extends ActionBarActivity {
                 if (isIconChange) {     //when isIconChange is true,default image
                     efaxHeadOutBox.setImageResource(R.drawable.efax_tab_outbox);
                     isIconChange = false;
+                    listView.setVisibility(View.INVISIBLE);  //消失
                 } else {   //when isIconChange is false,clicked image
+                    iniButton(2);
                     efaxHeadOutBox.setImageResource(R.drawable.efax_tab_outbox_p);
                     isIconChange = true;
+                    listView.setVisibility(View.VISIBLE);  //出现
+                    listView.setAdapter(adapter);
                 }
             }
         });
@@ -115,6 +130,7 @@ public class MyFaxMainPage extends ActionBarActivity {
                     efaxHeadDeliver.setImageResource(R.drawable.efax_tab_delieved);
                     isIconChange = false;
                 } else {   //when isIconChange is false,clicked image
+                    iniButton(3);
                     efaxHeadDeliver.setImageResource(R.drawable.efax_tab_delieved_p);
                     isIconChange = true;
                 }
@@ -131,6 +147,7 @@ public class MyFaxMainPage extends ActionBarActivity {
                     efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted);
                     isIconChange = false;
                 } else {   //when isIconChange is false,clicked image
+                    iniButton(4);
                     efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted_p);
                     isIconChange = true;
                 }
@@ -179,23 +196,60 @@ public class MyFaxMainPage extends ActionBarActivity {
 
 
 
+    }
 
 
-
-
-
+//同一时间只有一个按钮被点亮
+    private void iniButton(int buttonStatus) {
+        switch (buttonStatus) {
+            case 1:  //点击按钮1时，其他按钮被初始化
+                //button2
+                efaxHeadOutBox.setImageResource(R.drawable.efax_tab_outbox);
+                //button3
+                efaxHeadDeliver.setImageResource(R.drawable.efax_tab_delieved);
+                //button4
+                efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted);
+                break;
+            case 2:
+                efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox); //set background image
+                //button3
+                efaxHeadDeliver.setImageResource(R.drawable.efax_tab_delieved);
+                //button4
+                efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted);
+                break;
+            case 3:
+                //button1
+                efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox); //set background image
+                //button2
+                efaxHeadOutBox.setImageResource(R.drawable.efax_tab_outbox);
+                //button4
+                efaxHeadDeleted.setImageResource(R.drawable.efax_tab_deleted);
+                break;
+            case 4:
+                //button1
+                efaxHeadInbox.setImageResource(R.drawable.efax_tab_inbox); //set background image
+                //button2
+                efaxHeadOutBox.setImageResource(R.drawable.efax_tab_outbox);
+                //button3
+                efaxHeadDeliver.setImageResource(R.drawable.efax_tab_delieved);
+                break;
+            }
     }
 
 
 
-
-
-
-    private void initEfax() {
+    private void initEfaxInbox() {
         Efax efax1 = new Efax("Page 1", R.drawable.efax_tab_inbox);
-        efaxList.add(efax1);
+        efaxInboxList.add(efax1);
         Efax efax2 = new Efax("page 2", R.drawable.efax_tab_inbox_p);
-        efaxList.add(efax2);
+        efaxInboxList.add(efax2);
+    }
+
+    private void initEfaxOutbox() {
+        Efax efax1 = new Efax("Page 1", R.drawable.efax_tab_outbox);
+        efaxOutboxList.add(efax1);
+        Efax efax2 = new Efax("page 2", R.drawable.efax_tab_outbox_p);
+        efaxOutboxList.add(efax2);
     }
 
     @Override
